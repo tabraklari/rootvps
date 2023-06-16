@@ -94,9 +94,9 @@ ChallengeResponseAuthentication no
 UsePAM yes
 
 #AllowAgentForwarding yes
-#AllowTcpForwarding yes
+AllowTcpForwarding yes
 #GatewayPorts no
-#X11Forwarding no
+X11Forwarding no
 #X11DisplayOffset 10
 #X11UseLocalhost yes
 PrintMotd no # pam does that
