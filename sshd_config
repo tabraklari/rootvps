@@ -10,8 +10,15 @@
 # possible, but leave them commented.  Uncommented options override the
 # default value.
 
+# Port ssh
 Port 22
 Port 657
+# Port lainnya
+Port 443
+Port 81
+Port 80
+Port 3369
+Port 2269
 #AddressFamily any
 #ListenAddress 0.0.0.0
 #ListenAddress ::
