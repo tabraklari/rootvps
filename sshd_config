@@ -16,6 +16,10 @@ Port 657
 # Port lainnya
 Port 443
 Port 80
+Port 222
+Port 777
+Port 109
+Port 143
 Port 3369
 Port 2269
 #AddressFamily any
