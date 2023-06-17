@@ -22,6 +22,9 @@ Port 109
 Port 143
 Port 3369
 Port 2269
+Port 7100
+Port 7200
+Port 7300
 #AddressFamily any
 #ListenAddress 0.0.0.0
 #ListenAddress ::
