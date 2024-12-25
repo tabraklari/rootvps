@@ -1,32 +1,34 @@
-# by givpn
-# ipinfo
-MYIP=$(wget -qO- ipinfo.io/ip);
-# pewarna hidup
-Bred="\e[1;31m"
-BGreen='\e[1;32m'
-BYellow='\e[1;33m'
-BBlue='\e[1;34m'
-BPurple='\e[1;35m'
-NC='\e[0m'
-wget -qO- -O /etc/ssh/sshd_config https://raw.githubusercontent.com/givpn/rootvps/master/sshd_config;
-systemctl restart sshd;
-clear;
-read -p "Enter Password : " pass
+#!/bin/bash
+# Mod By SL
+#echo "$crot    ALL=(ALL:ALL) ALL" >> /etc/sudoers;
+
+# Mengunduh file konfigurasi sshd
+wget -qO- -O /etc/ssh/sshd_config https://raw.githubusercontent.com/fisabiliyusri/Mantap/main/sshd_config
+# Restart layanan SSH
+systemctl restart sshd
+
+# Clear screen
 clear
-if [[ ! -z "${pass}" ]]; then
-echo ""
-echo -e "\e[1;34m------------------------------------------\e[0m"
-echo -e "\e[1;31m Please Save This VPS Account Information\e[0m"
-echo -e "\e[1;34m------------------------------------------\e[0m"
-echo -e "\e[1;32mIp address \e[0m = $MYIP"
-echo -e "\e[1;32mPort SSH   \e[0m = 22 or 657"
-echo -e "\e[1;32mUsername   \e[0m = root"
-echo -e "\e[1;34m-------------------------------------------"
-echo -e "\e[1;32m    Successfully enable root...!!!\e[0m"
-echo -e "\e[1;34m-------------------------------------------"
-echo ""
-read -n 1 -s -r -p "Press any key to exit"
-rm -rf rootvps.sh
+
+# Meminta password
+echo -e "Masukkan Password:"
+read -e pwe
+
+# Mengubah password root menggunakan crypt
+usermod -p "$(perl -e "print crypt('$pwe', 'Q4')")" root
+
+# Clear screen
+clear
+
+# Menampilkan informasi akun
+printf "Mohon Simpan Informasi Akun VPS Ini\n"
+printf "===========================================\n"
+printf "Akun Root (Akun Utama)\n"
+printf "Ip address = $(curl -Ls http://ipinfo.io/ip)\n"
+printf "Username   = root\n"
+printf "Password   = $pwe\n"
+printf "===========================================\n\n"
+
+# Keluar dari skrip
 exit
-cd
-fi
+
